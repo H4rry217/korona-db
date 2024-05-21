@@ -1,0 +1,36 @@
+# you can select the engine, 'bucket' or 'enigma'.
+engine: bucket
+# max size(MB) of data file
+max-file-size: 1024
+work-path:
+# data will be flushed into the disk at regular intervals
+# value = 0 it means that OS will decide the timing of data flush into disk
+# value = -1 it means each write will be forced flush into the disk
+data-sync: 10
+
+# bucket engine use filechannel(in the base, use traditional systemcall like write() or read()).
+bucket-setting:
+  # data will write buffer(KB) first, all the buffer will be written in when buffer full
+  # value = 0, data is directly write into file, only work on <data-sync> > 0
+  write-buffer-size: 16384
+
+# enigma engine use mmap+cas(bump-the-pointer), its has high performance in small data writing,
+# but need preallocate a very big memory to memory-mappings before.
+enigma-setting:
+  # warm-up the memory of mappings
+  warm-up: true
+
+# compaction process in lsm like database is usually to see. which mean at set intervals
+# the korona will check data status, if garbage in datafile is too large, compaction process
+# will block all read request utils the compaction process done.
+compact:
+  # unit : second; interval must > 0
+  interval: 300
+  # desc : only start compaction process while the load curve of recent read is lower than threshold
+  # other: if threshold-percent = 0, the curve of recent read will not be the checked
+  threshold-percent: 0
+  threshold-value: 10000
+
+keydir:
+  dump-file: true
+  interval: 300
