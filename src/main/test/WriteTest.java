@@ -1,12 +1,10 @@
-import com.google.common.base.Stopwatch;
+import io.korona.benchmark.Stopwatch;
 import io.korona.core.metadata.options.KoronaOption;
 import io.korona.server.KoronaDatabase;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @program: korona-db
@@ -21,7 +19,7 @@ public class WriteTest {
         KoronaOption option = KoronaDatabase.findOption("");
         KoronaDatabase koronaDatabase = new KoronaDatabase(option);
 
-        Stopwatch stopwatch = Stopwatch.createUnstarted();
+        Stopwatch stopwatch = new Stopwatch();
         stopwatch.start();
 
         int RANGE = 1000000;
@@ -30,11 +28,10 @@ public class WriteTest {
             koronaDatabase.put(j, j);
         }
 
+        //waiting data flush if that setting is enable
         stopwatch.stop();
 
-        //waiting data flush if that setting is enable
-
-        long millis = stopwatch.elapsed(TimeUnit.MILLISECONDS);
+        long millis = stopwatch.getElapsedTime();
         System.out.println("Elapsed time: " + millis + " ms");
     }
 

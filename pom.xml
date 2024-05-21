@@ -13,36 +13,58 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <skipTests>true</skipTests>
-        <author>H4rry217</author>
-        <github-homepage>https://github.com/H4rry217</github-homepage>
-        <mail>hcilnete@gmail.com</mail>
+
+        <github-homepage>github.com/H4rry217/korona-db</github-homepage>
+        <author.name>H4rry217</author.name>
+        <author>hcilnete@gmail.com</author>
+
+        <netty.version>4.1.109.Final</netty.version>
+        <jline.version>3.26.1</jline.version>
+        <junit.version>4.12</junit.version>
+        <snakeyaml.version>2.2</snakeyaml.version>
     </properties>
 
     <dependencies>
+
+        <!--netty-->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-handler</artifactId>
+            <version>${netty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-buffer</artifactId>
+            <version>${netty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-transport</artifactId>
+            <version>${netty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-codec</artifactId>
+            <version>${netty.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
-            <version>2.2</version>
+            <version>${snakeyaml.version}</version>
         </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.jline</groupId>
             <artifactId>jline</artifactId>
-            <version>3.26.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>31.1-jre</version>
-            <scope>test</scope>
+            <version>${jline.version}</version>
         </dependency>
 
     </dependencies>

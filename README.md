@@ -49,6 +49,7 @@ First letter is homophonic letter taken from "***K*ey**"
 > - [ ] RESP Protocol support
 > - [ ] Better write performance
 > - [ ] More datatype support
+> - [ ] ByteBuffer poll
 > - [ ] Multiply operate pipeline
 > - [ ] Distributed system
 > - [ ] GraalVM native support
